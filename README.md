@@ -3,6 +3,8 @@
 </p>
 
 <p align="center">
+  <a href="ICRA26_0209_FI.pdf"><img src="https://img.shields.io/badge/ICRA%202026-Accepted-B31B1B.svg" alt="ICRA 2026"></a>
+  <a href="ICRA26_0209_FI.pdf"><img src="https://img.shields.io/badge/ICRA%202026-Best%20Paper%20Finalist-FFD700.svg" alt="ICRA 2026 Best Paper Finalist"></a>
   <a href="#"><img src="https://img.shields.io/badge/arXiv-2026.xxxxx-B31B1B.svg" alt="arXiv"></a>
   <a href="https://dexoravla.github.io"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"></a>
   <a href="https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-Hugging%20Face-yellow.svg" alt="Dataset"></a>
@@ -12,7 +14,8 @@
 </p>
 
 <p align="center">
-  <i>Dexora is a Vision–Language–Action (VLA) system for <b>dual-arm, dual-hand, 36-DoF dexterous manipulation</b>.<br>
+  <i>Dexora is a Vision–Language–Action (VLA) system for <b>dual-arm, dual-hand, 36-DoF dexterous manipulation</b>,<br>
+  accepted at <b>ICRA 2026</b> and shortlisted for the <b>Best Paper Award (Final List)</b> (<a href="ICRA26_0209_FI.pdf">paper PDF</a>).<br>
   This repository releases the full <b>training</b>, <b>inference</b>, <b>data-processing</b> and <b>teleoperation</b> code.</i>
 </p>
 
@@ -20,7 +23,9 @@
 
 ## 🔥 News & Updates
 
+- **2026-05** — Dexora is shortlisted for the **ICRA 2026 Best Paper Award (Final List)** 🏆
 - **2026-05** — Public source release: training pipeline, real-robot inference stack, BSON → LeRobot v2.1 converters, Vision-Pro teleoperation tools.
+- **2026-01** — Paper **accepted to ICRA 2026** 🎉  ([PDF](ICRA26_0209_FI.pdf)).
 - **2025-12-12** — Released the **task-level** view of the real-world dataset (one folder per high-level task) on [Hugging Face](https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset).
 - **2025-12-03** — Released the full **Real-World Dataset** (**12.2K episodes / 2.92M frames / 40.5 h**) on [Hugging Face](https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset).
 - **Coming soon** — Public release of the **100K-episode simulation dataset** generated in MuJoCo.
@@ -54,6 +59,7 @@ Dexora-VLA/
 ├── s{1,2a,2b,2c,3}_*.sh           # Per-stage launchers
 ├── run_all_stages.sh              # End-to-end pipeline driver
 ├── pyproject.toml / requirements*.txt
+├── ICRA26_0209_FI.pdf             # ICRA 2026 paper
 └── LICENSE / CITATION.cff / CONTRIBUTING.md / CODE_OF_CONDUCT.md
 ```
 
@@ -377,18 +383,18 @@ Two conda environments are required (the same ones used by `deploy/`): `imitall`
 
 ## 📜 Citation
 
-If you find Dexora useful in your research, please consider citing:
+If you find Dexora useful in your research, please cite our ICRA 2026 paper:
 
 ```bibtex
-@misc{dexora2026,
-  title         = {Dexora: Open-Source VLA for High-DoF Bimanual Dexterity},
-  author        = {Dexora Team},
-  year          = {2026},
-  archivePrefix = {arXiv},
-  eprint        = {xxxx.xxxxx},
-  primaryClass  = {cs.RO}
+@inproceedings{dexora2026,
+  title     = {Dexora: Open-Source VLA for High-DoF Bimanual Dexterity},
+  author    = {Zhang, Zongzheng and Pang, Jingrui and others},
+  booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2026}
 }
 ```
+
+The full author list is available in [`CITATION.cff`](CITATION.cff).
 
 ---
 
