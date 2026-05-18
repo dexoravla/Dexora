@@ -1,0 +1,67 @@
+1. 系统依赖安装（Ubuntu/Debian）
+# 基础编译工具链（必需）
+sudo apt-get update
+sudo apt-get install -y \
+    cmake \
+    build-essential \
+    python3-dev \
+    pkg-config
+ 
+# 多媒体处理库（视频编解码支持）
+sudo apt-get install -y \
+    libavformat-dev \
+    libavcodec-dev \
+    libavdevice-dev \
+    libavutil-dev \
+    libswscale-dev \
+    libswresample-dev \
+    libavfilter-dev \
+    libx264-dev \  # H.264编码支持
+    libx265-dev    # H.265编码支持
+
+2. Conda 环境配置
+# 创建专用Python环境（推荐环境名与项目相关）
+conda create -n realman_env python=3.11 -y
+conda activate realman_env
+ 
+# 安装FFmpeg（通过conda-forge获取稳定版本）
+conda install -c conda-forge ffmpeg=7.1.1 -y
+
+3. lerobot代码获取	
+# 克隆LeRobot核心库
+git clone https://github.com/huggingface/lerobot.git
+cd lerobot
+ 
+# 开发模式安装（支持代码热更新）
+pip install -e . # 包含完整开发依赖
+
+4.配置文件说明
+realman_config.py
+"""
+机器人数据采集系统配置中心
+ 
+配置项说明：
+- 硬件参数：机器人类型/机械臂型号/相机参数
+- 数据参数：帧率/动作空间定义
+- 存储路径：原始数据与转换后数据位置
+"""
+
+5.数据转换工具
+realman_trans.py
+"""
+NAS数据检索与LeRobot格式转换系统
+ 
+主要功能：
+1. 自动扫描NAS中的HDF5原始数据
+2. 执行数据清洗和标准化处理
+3. 生成LeRobot兼容的dataset结构
+ 
+转换流程：
+原始HDF5 → [解析] → LeRobot格式
+            ├─ data/    (传感器数据)
+            ├─ meta/    (元信息)
+            ├─ videos/  (视频流)
+            ├─ device/  (设备配置)  # 新增
+            └─ label/   (标注数据)  # 新增
+"""
+

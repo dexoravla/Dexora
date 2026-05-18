@@ -1,0 +1,55 @@
+# Paper configuration: 400M policy model (Dexora §IV-A).
+#   28 transformer layers, hidden_size=1024, 16 attention heads -> ~400M params.
+# Use this yaml to reproduce the numbers in Tab. I / II / III, etc.
+# The 1B configuration (hidden=2048, depth=28, heads=32) is in base.yaml.
+
+common:
+  img_history_size: 1
+  action_chunk_size: 32           # L = 32, matching paper
+  num_cameras: 4
+  num_patches_per_view: 729        # 27 x 27 for SigLip-SO400M @ 384x384
+  state_dim: 36                    # 6 + 12 + 6 + 12 = 36 DoF dual-arm dual-hand
+
+dataset:
+  buf_path: /path/to/buffer
+  buf_num_chunks: 512
+  buf_chunk_size: 512
+  epsd_len_thresh_low: 32
+  epsd_len_thresh_high: 2048
+  image_aspect_ratio: pad
+  tokenizer_max_length: 1024
+
+model:
+  lang_adaptor: mlp2x_gelu
+  img_adaptor: mlp2x_gelu
+  state_adaptor: mlp3x_gelu
+  lang_token_dim: 4096             # T5-XXL
+  img_token_dim: 1152              # SigLip-SO400M
+  state_token_dim: 36
+  rdt:
+    # 400M: hidden_size=1024, depth=28, num_heads=16  (paper §IV-A)
+    hidden_size: 1024
+    depth: 28
+    num_heads: 16
+    cond_pos_embed_type: multimodal
+  noise_scheduler:
+    type: ddpm
+    num_train_timesteps: 1000
+    # DPMSolver++ at inference. 5 steps is the same setting used to produce the
+    # numbers in Tab. I/II/III; see README "Inference / Deployment" for the
+    # rationale and the trade-off vs. quality.
+    num_inference_timesteps: 5
+    beta_schedule: squaredcos_cap_v2
+    # Paper §III-C: "The model predicts the action noise \hat{eps}_theta,
+    # thereby yielding the predicted action sequence \hat{a}_{t:t+L-1}."
+    # We therefore use noise (epsilon) prediction during training. Older
+    # checkpoints (released as `sample` for legacy reasons) keep working
+    # because RDTRunner / compute_logpi.py handle both branches.
+    prediction_type: epsilon
+    clip_sample: False
+  ema:
+    update_after_step: 0
+    inv_gamma: 1.0
+    power: 0.75
+    min_value: 0.0
+    max_value: 0.9999

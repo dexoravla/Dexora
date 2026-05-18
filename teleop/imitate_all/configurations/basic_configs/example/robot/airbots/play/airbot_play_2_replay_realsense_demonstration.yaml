@@ -1,0 +1,28 @@
+_target_: robots.airbots.airbot_play.airbot_play_2_demonstration.AIRBOTPlayDemonstration
+
+groups:
+  g1:
+    leader:
+      _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+      can_bus: "can0"
+      bigarm_type: "encoder"
+      forearm_type: "encoder"
+      eef_mode: "encoder"
+      default_action: null
+    followers:
+      - _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+        can_bus: "can1"
+        eef_mode: "gripper"
+      # - _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+      #   can_bus: "can2"
+      #   eef_mode: "teacherv2"
+
+cameras:
+  cam1:
+    _target_: habitats.common.robot_devices.cameras.intelrealsense.IntelRealSenseCamera
+    camera_index: 327122077893
+    fps: 30
+    width: 640
+    height: 480
+    color_mode: "rgb"
+    use_depth: true

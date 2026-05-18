@@ -1,0 +1,106 @@
+cff-version: 1.2.0
+message: "If you use Dexora in your research, please cite our ICRA 2026 paper."
+title: "Dexora: Open-source VLA for High-DoF Bimanual Dexterity"
+abstract: >-
+  Dexora is the first open-source Vision-Language-Action (VLA) system that
+  natively targets dual-arm, dual-hand, high-DoF manipulation. It introduces a
+  hybrid teleoperation pipeline, an embodiment-matched sim+real corpus, and a
+  discriminator-guided data-quality-aware training recipe.
+type: software
+url: "https://dexoravla.github.io"
+repository-code: "https://github.com/Augety7777/Dexora-VLA"
+license: MIT
+keywords:
+  - vision-language-action
+  - imitation learning
+  - dexterous manipulation
+  - bimanual manipulation
+  - diffusion transformer
+  - robot learning
+authors:
+  - given-names: Zongzheng
+    family-names: Zhang
+    affiliation: "Tsinghua University; Beijing Academy of Artificial Intelligence"
+  - given-names: Jingrui
+    family-names: Pang
+    affiliation: "Tsinghua University; Beijing Academy of Artificial Intelligence"
+  - given-names: Zhuo
+    family-names: Yang
+    affiliation: Tsinghua University
+  - given-names: Kun
+    family-names: Li
+    affiliation: Beijing Academy of Artificial Intelligence
+  - given-names: Minwen
+    family-names: Liao
+    affiliation: Tsinghua University
+  - given-names: Saining
+    family-names: Zhang
+    affiliation: Tsinghua University
+  - given-names: Guoxuan
+    family-names: Chi
+    affiliation: Tsinghua University
+  - given-names: Jinbang
+    family-names: Guo
+    affiliation: Beijing Academy of Artificial Intelligence
+  - given-names: Huan-ang
+    family-names: Gao
+    affiliation: Tsinghua University
+  - given-names: Modi
+    family-names: Shi
+    affiliation: "The University of Hong Kong"
+  - given-names: Dongyun
+    family-names: Ge
+    affiliation: Tsinghua University
+  - given-names: Yao
+    family-names: Mu
+    affiliation: "Shanghai Jiao Tong University"
+  - given-names: Jiayuan
+    family-names: Gu
+    affiliation: ShanghaiTech University
+  - given-names: Rui
+    family-names: Chen
+    affiliation: Tsinghua University
+  - given-names: Hao
+    family-names: Dong
+    affiliation: Peking University
+  - given-names: Huazhe
+    family-names: Xu
+    affiliation: Tsinghua University
+  - given-names: Li
+    family-names: Yi
+    affiliation: Tsinghua University
+  - given-names: Yixin
+    family-names: Zhu
+    affiliation: Peking University
+  - given-names: Hang
+    family-names: Zhao
+    affiliation: Tsinghua University
+  - given-names: Pengwei
+    family-names: Wang
+    affiliation: Beijing Academy of Artificial Intelligence
+  - given-names: Shanghang
+    family-names: Zhang
+    affiliation: "Beijing Academy of Artificial Intelligence; Peking University"
+  - given-names: Guocai
+    family-names: Yao
+    affiliation: Beijing Academy of Artificial Intelligence
+  - given-names: Jianyu
+    family-names: Chen
+    affiliation: Tsinghua University
+  - given-names: Hongyang
+    family-names: Li
+    affiliation: "The University of Hong Kong"
+  - given-names: Hao
+    family-names: Zhao
+    affiliation: "Tsinghua University; Beijing Academy of Artificial Intelligence"
+preferred-citation:
+  type: conference-paper
+  title: "Dexora: Open-source VLA for High-DoF Bimanual Dexterity"
+  year: 2026
+  collection-title: "Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)"
+  authors:
+    - given-names: Zongzheng
+      family-names: Zhang
+    - given-names: Jingrui
+      family-names: Pang
+    - name: "and others"

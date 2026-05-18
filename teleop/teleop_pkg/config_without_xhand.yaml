@@ -1,0 +1,49 @@
+metadata:
+  version: "v2"
+  created: "2025-04-01"
+
+vision_pro_teleop:
+  # 以下参数无需修改
+  rate_hz: 50
+  log_enabled: false  
+  hand_name: 'xhand'
+  
+
+  # 调节手指比例
+  scaling_factor: 1.3
+
+  # 如果需要主动连接 Vision Pro，则配置为 connect_vision_pro 为 true，avp_ip 为 vision pro 实际 IP
+  connect_vision_pro: false
+  avp_ip: "192.168.14.143"
+  
+  # 根据使用情况和连接方式自行配置
+  use_hand_a: true
+  hand_a:
+    hand_id: 0
+    use_rs485: true
+    rs485_serial_port: "/dev/ttyUSB0"  
+    rs485_baud_rate: 3000000
+    
+    # 添加EtherCAT配置
+    use_ethercat: false  # 新增，设置为true
+    ethercat_master_id: 0  # 新增，主站ID
+    ethercat_slave_position: 0  # 新增，从站位置
+    ethercat_vendor_id: 0x00000000  # 新增，供应商ID
+    ethercat_product_code: 0x00000000  # 新增，产品代码
+
+    # 将文件 auth_info.json 放入 config 同级目录，或 填入 auth_info.json 文件的绝对路径， 例如 "/home/robotera/auth_info.json"
+    auth_info_file_path: "auth_info.json"
+    # 将文件 auth_info.json 放入 config 同级目录，或 填入 auth_info.json 文件的绝对路径， 例如 "/home/robotera/auth_info.json"
+    key_file_path: "key.dat"
+  
+  use_hand_b: true
+  hand_b:
+    hand_id: 1
+    use_rs485: true
+    rs485_serial_port: "/dev/ttyUSB1"
+    rs485_baud_rate: 3000000
+
+    # 将文件 auth_info.json 放入 config 同级目录，或 填入 auth_info.json 文件的绝对路径， 例如 "/home/robotera/auth_info.json"
+    auth_info_file_path: "auth_info.json"
+    # 将文件 auth_info.json 放入 config 同级目录，或 填入 auth_info.json 文件的绝对路径， 例如 "/home/robotera/auth_info.json"
+    key_file_path: "key.dat"

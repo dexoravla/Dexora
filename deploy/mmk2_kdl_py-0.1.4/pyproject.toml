@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmk2_kdl_py"
+version = "0.1.4"  # Temporarily set static version
+description = "Python SDK for MMK2 kinematics and dynamics"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "hanyang shao", email = "shy757@126.com"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "pip>=24.0",
+    "setuptools>=68.1.2",
+    "wheel>=0.42.0",
+    "numpy",
+    "casadi",
+    "bidict",
+    "xacrodoc",
+    "lxml",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+include = ["mmk2_kdl_py*"]
+
+# [tool.setuptools_scm]  # Comment out this section temporarily
+# write_to = "src/mmk2_kdl_py/_version.py"

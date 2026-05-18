@@ -1,0 +1,34 @@
+_target_: robots.airbots.airbot_mmk.airbot_mmk2_bson.AIRBOTMMK2
+
+ip: "192.168.11.200"
+
+components: ["left_arm", "left_arm_eef", "right_arm", "right_arm_eef", "head", "spine"]
+# components: ["left_arm", "left_arm_eef", "right_arm", "right_arm_eef"]
+
+cameras:
+  head_camera: ["color"]
+  # left_camera: ["color"]
+  # right_camera: ["color"]
+
+demonstrate: true
+
+default_action:
+  [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.0,
+    0.15,
+  ]

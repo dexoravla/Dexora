@@ -1,0 +1,6 @@
+{
+  "_comment_zh": "这是 xhand_tele_ops SDK 用到的鉴权信息占位模板。从厂家拿到正式的 auth_info.json 后，复制为 auth_info.json 并放在 teleop_pkg/ 目录下（与 config.yaml 同级）。",
+  "_comment_en": "Placeholder for the auth_info.json required by xhand_tele_ops. Copy your real auth file to teleop_pkg/auth_info.json (next to config.yaml).",
+  "auth_token": "<FILL_ME_IN>",
+  "client_id":  "<FILL_ME_IN>"
+}

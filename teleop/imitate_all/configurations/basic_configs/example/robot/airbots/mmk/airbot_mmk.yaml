@@ -1,0 +1,13 @@
+_target_: robots.airbots.airbot_mmk.airbot_mmk2.AIRBOTMMK2
+
+ip: "192.168.11.200"
+
+default_action: null
+
+# The order is important
+components: ["left_arm", "left_arm_eef", "right_arm", "right_arm_eef", "head", "spine"]
+
+cameras:
+  head_camera: ["color"]
+  # left_camera: ["color"]
+  # right_camera: ["color"]

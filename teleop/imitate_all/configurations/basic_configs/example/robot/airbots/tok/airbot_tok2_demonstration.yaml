@@ -1,0 +1,34 @@
+_target_: robots.airbots.airbot_play.airbot_play_3_demonstration.AIRBOTPlay
+
+leader_number: 2
+follower_number: 2
+leader_arm_type: ["encoder", "encoder"]
+follower_arm_type: ["play_long", "play_long"]
+leader_end_effector: ["E2B", "E2B"]
+follower_end_effector: ["G2", "G2"]
+leader_can_interface: ["can0", "can2"]
+follower_can_interface: ["can1", "can3"]
+leader_domain_id: [33, 34]
+follower_domain_id: [44, 45]
+start_arm_joint_position: [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+start_eef_joint_position: [0.0, 0.0]  # useless for encoder teachers
+
+cameras:
+  cam1:
+    _target_: habitats.common.robot_devices.cameras.opencv.OpenCVCamera
+    camera_index: 0
+    fps: 30
+    width: 640
+    height: 480
+  # cam2:
+  #   _target_: habitats.common.robot_devices.cameras.opencv.OpenCVCamera
+  #   camera_index: 2
+  #   fps: 30
+  #   width: 640
+  #   height: 480
+  # cam3:
+  #   _target_: habitats.common.robot_devices.cameras.opencv.OpenCVCamera
+  #   camera_index: 4
+  #   fps: 30
+  #   width: 640
+  #   height: 480

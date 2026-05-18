@@ -1,0 +1,46 @@
+torchvision
+torch
+pyquaternion
+pyyaml
+rospkg
+pexpect
+opencv-python
+matplotlib
+einops
+packaging
+h5py
+ipython
+dm_env
+tqdm
+OneEuroFilter
+omegaconf >=2.3.0
+hydra-core >=1.3.2
+
+# wandb >=0.16.3
+# imageio >=2.34.0
+# gdown >=5.1.0
+# einops >=0.8.0
+# pymunk >=6.6.0
+# zarr >=2.17.0
+# numba >=0.59.0
+# torch >=2.2.1
+# opencv-python >=4.9.0
+# diffusers >=0.27.2
+# torchvision >=0.17.1
+# h5py >=3.10.0
+# huggingface-hub >=0.25.0
+# gymnasium >=0.29.1
+# cmake >=3.29.0.1
+# pre-commit >=3.7.0
+# debugpy >=1.8.1
+# pytest >=8.1.0
+# pytest-cov >=5.0.0
+# datasets >=2.19.0
+# pyav >=12.0.5
+# rerun-sdk >=0.15.1
+# deepdiff >=7.0.1
+# flask >=3.0.3
+# pandas >=2.2.2
+# scikit-image >=0.23.2
+# setuptools !=71.0.1
+# pyrealsense2 >=2.55.1.6486

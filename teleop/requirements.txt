@@ -1,0 +1,17 @@
+# 顶层 requirements 是给「外层启动器」和「数据筛查 / 视频工具」用的——
+# 它们对版本要求宽松，且不依赖任何机器人 / 灵巧手 SDK。
+#
+# 真正录制 / 回放需要的两个重型 conda 环境分别在：
+#   imitall          → imitate_all/requirements/*.txt + airbot 私有包
+#   xhand_tele_env   → teleop_pkg/requirements_x86_64.txt + xhand_tele_ops-*.whl
+# 详见 README.md「环境安装」一节。
+
+tqdm>=4.64.0
+psutil>=5.9          # scripts/record_intrpt.py 的进程管理需要
+pymongo>=4.0         # data_tools 里 bson 解析
+imageio>=2.30        # video_tools / video_rotate
+natsort>=8.0         # video_tools / camera_tools
+opencv-python>=4.5
+numpy>=1.23
+pyyaml>=6.0
+pillow>=10.0

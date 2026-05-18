@@ -1,0 +1,77 @@
+# Dexora MMK+xHand real-robot inference configuration.
+#
+# Used by ``deploy/dexora_inference_zmq.py`` (the policy host) plus
+# ``deploy/mmk_forwarder.py`` (arms) and ``deploy/xhand_forwarder.py`` (hands).
+# All three processes read the same file so paths / camera order / ZMQ ports
+# stay consistent.
+
+# ---------- Cameras ----------
+# Camera order must match the canonical Dexora 4-view layout:
+#   cam_head (= observation.images.top)
+#   cam_left_wrist  (= observation.images.wrist_left)
+#   cam_third_view  (= observation.images.front, third-person)
+#   cam_right_wrist (= observation.images.wrist_right)
+camera_names: ['cam_head', 'cam_left_wrist', 'cam_third_view', 'cam_right_wrist']
+ext_cam_ids: ["/dev/camera_head", "/dev/camera_left", "/dev/camera_high", "/dev/camera_right"]
+img_history_size: 1
+image_aspect_ratio: pad   # SigLIP-SO400M sees a square 384x384 padded image.
+
+# ---------- Model parameters ----------
+seed: 42
+state_dim: 36                  # paper layout: 6+6+12+12 (head/spine dropped at runtime)
+chunk_size: 32                 # Diffusion action horizon L (paper §IV-A)
+denoising_steps: 5             # DPMSolver++ steps at inference (paper §III-C)
+
+# ---------- Control loop ----------
+# Must match the dataset's recording frequency (20 Hz, paper §III-A); otherwise
+# the predicted action time scale is wrong.
+control_frequency: 20.0
+use_actions_interpolation: false  # Whether to interpolate actions (legacy, use use_rate_limiting instead)
+use_rate_limiting: false  # Whether to apply per-tick rate limiting (default: false for faster task progression)
+# Adaptive rate limiting: automatically applies rate limiting when action changes exceed threshold
+adaptive_rate_limit_threshold_arm: 0.05  # rad per step (at 20Hz, 0.05 rad/step = 1 rad/s)
+adaptive_rate_limit_threshold_hand: 0.15  # rad per step (at 20Hz, 0.15 rad/step = 3 rad/s)
+
+# Temporal Ensemble (Smooth Trajectory Blending)
+# 0.5 is a good balance for 20Hz control.
+# Higher = more responsive, Lower = more stable/laggy.
+action_ensemble_alpha: 0.9  # 增加融合权重，更快响应新预测
+max_steps: 100000  # Maximum number of control steps
+
+# XHand observation unit:
+# - "deg": xhand_forwarder returns degrees (common), will be converted to radians for GR00T input
+# - "rad": xhand_forwarder already returns radians
+xhand_obs_unit: "deg"
+
+# XHand send throttling (reduces CRC / bus pressure):
+# - send every N ticks, and only when mean abs delta > eps (radians)
+xhand_send_stride: 2
+xhand_send_eps: 0.01
+
+# XHand forwarder-side throttling / retry (last resort against CRC):
+# - forwarder will skip sends faster than this interval
+xhand_min_send_interval_s: 0.12
+# - forwarder will skip when mean abs delta < eps (radians); set 0 to disable
+xhand_forwarder_eps: 0.0
+# - convert action unit before calling SDK (some SDKs expect degrees)
+xhand_action_unit: "rad"
+# - CRC backoff / retries
+xhand_send_retries: 1
+xhand_crc_backoff_s: 0.08
+
+# Debug: dump one snapshot (images/state/action_buffer) under logs/debug_dump_*/ for offline comparison
+debug_dump_once: false
+
+# ---------- MMK+xHand SDK paths ----------
+# Both forwarders ``chdir`` into these directories and import their respective
+# SDKs (``airbot_py`` / ``xhand_tele_ops``). Override on each robot.
+xhand_code_path: "/home/ubuntu/teleop_software_pkg"
+xhand_config:    "/home/ubuntu/teleop_software_pkg/config.yaml"
+mmk_code_path:   "/home/ubuntu/mmk_dev/Imitate-All"
+mmk_ip:   "192.168.11.200"
+mmk_port: 50055
+
+# ---------- Optional rate-limiting steps (legacy ``interpolate_action``) ----------
+arm_steps_length:  [0.01, 0.01, 0.01, 0.01, 0.01, 0.01]
+hand_steps_length: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+

@@ -1,0 +1,9 @@
+# Development / CI dependencies (mirrors ``pyproject.toml`` ``[dev]`` extra).
+# Install with:    pip install -r requirements-dev.txt
+-r requirements.txt
+pytest>=8.0
+pytest-cov>=4.1
+ruff>=0.5.0
+black>=24.4
+pre-commit>=3.7
+build>=1.2

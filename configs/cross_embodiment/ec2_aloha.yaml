@@ -1,0 +1,87 @@
+# EC-2: dual-arm grippers (Cobot Magic ALOHA, 2 x (6 DoF arm + 1 DoF gripper)).
+
+common:
+  img_history_size: 1
+  action_chunk_size: 32
+  num_cameras: 4
+  num_patches_per_view: 729
+  state_dim: 36
+
+dataset:
+  buf_path: /path/to/buffer
+  buf_num_chunks: 512
+  buf_chunk_size: 512
+  epsd_len_thresh_low: 32
+  epsd_len_thresh_high: 2048
+  image_aspect_ratio: pad
+  tokenizer_max_length: 1024
+
+model:
+  lang_adaptor: mlp2x_gelu
+  img_adaptor: mlp2x_gelu
+  state_adaptor: mlp3x_gelu
+  lang_token_dim: 4096
+  img_token_dim: 1152
+  state_token_dim: 36
+  rdt:
+    hidden_size: 1024
+    depth: 28
+    num_heads: 16
+    cond_pos_embed_type: multimodal
+  noise_scheduler:
+    type: ddpm
+    num_train_timesteps: 1000
+    num_inference_timesteps: 5
+    beta_schedule: squaredcos_cap_v2
+    prediction_type: epsilon   # Eq.(8) trains on noise residual; matches base_400m.yaml.
+    clip_sample: False
+  ema:
+    update_after_step: 0
+    inv_gamma: 1.0
+    power: 0.75
+    min_value: 0.0
+    max_value: 0.9999
+
+embodiment:
+  name: "Cobot Magic ALOHA"
+  dof: 14
+  # Active = right_arm[0:6] + right_hand[0] (gripper) + left_arm[0:6] + left_hand[0]
+  state_elem_mask:
+    - 1  # right_arm 0..5
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1  # right_hand 0 (right gripper)
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0  # right_hand 11
+    - 1  # left_arm 0..5
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1  # left_hand 0 (left gripper)
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+  # Head + both wrist cameras (no third-person view).
+  camera_active_mask: [1, 1, 1, 0]

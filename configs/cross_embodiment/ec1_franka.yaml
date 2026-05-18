@@ -1,0 +1,92 @@
+# EC-1: single-arm gripper (Franka Emika Panda, 6 DoF arm + 1 DoF gripper).
+# Inherits the 400M architecture; only the action mask / camera presence change.
+
+common:
+  img_history_size: 1
+  action_chunk_size: 32
+  num_cameras: 4
+  num_patches_per_view: 729
+  state_dim: 36
+
+dataset:
+  buf_path: /path/to/buffer
+  buf_num_chunks: 512
+  buf_chunk_size: 512
+  epsd_len_thresh_low: 32
+  epsd_len_thresh_high: 2048
+  image_aspect_ratio: pad
+  tokenizer_max_length: 1024
+
+model:
+  lang_adaptor: mlp2x_gelu
+  img_adaptor: mlp2x_gelu
+  state_adaptor: mlp3x_gelu
+  lang_token_dim: 4096
+  img_token_dim: 1152
+  state_token_dim: 36
+  rdt:
+    hidden_size: 1024
+    depth: 28
+    num_heads: 16
+    cond_pos_embed_type: multimodal
+  noise_scheduler:
+    type: ddpm
+    num_train_timesteps: 1000
+    num_inference_timesteps: 5
+    beta_schedule: squaredcos_cap_v2
+    prediction_type: epsilon   # Eq.(8) trains on noise residual; matches base_400m.yaml.
+    clip_sample: False
+  ema:
+    update_after_step: 0
+    inv_gamma: 1.0
+    power: 0.75
+    min_value: 0.0
+    max_value: 0.9999
+
+# ===== Cross-embodiment projection (paper §IV-C) =====
+embodiment:
+  name: "Franka Emika Panda + parallel-jaw gripper"
+  dof: 7
+  # 1 where the Dexora 36-D index is "real" for this robot, 0 otherwise.
+  # Layout = [ right_arm(6) | right_hand(12) | left_arm(6) | left_hand(12) ]
+  # Franka uses 6 arm dims + 1 gripper dim -> active = right_arm[0:6] + right_hand[0].
+  state_elem_mask:
+    - 1  # right_arm 0
+    - 1  # right_arm 1
+    - 1  # right_arm 2
+    - 1  # right_arm 3
+    - 1  # right_arm 4
+    - 1  # right_arm 5
+    - 1  # right_hand 0  (gripper open/close)
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0  # right_hand 11
+    - 0  # left_arm 0..5
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0  # left_hand 0..11
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+  # Cameras present on this embodiment.
+  # Order matches train/dataset.py: [cam_high, cam_left_wrist, cam_right_wrist, cam_third_view]
+  camera_active_mask: [0, 0, 1, 0]

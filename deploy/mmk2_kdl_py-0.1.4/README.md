@@ -1,0 +1,93 @@
+<!--
+ * @Copyright: qiuzhi.tech
+ * @Author: hanyang
+ * @Date: 2025-08-25 11:27:38
+ * @LastEditTime: 2025-08-27 11:51:13
+-->
+# mmk2_kdl_py
+
+Python SDK for MMK2 kinematics and dynamics.
+
+## Installation
+
+You can install the package from the GitLab repository:
+
+```bash
+pip install git+https://git.qiuzhi.tech/mmk2/mmk2_kdl.git
+
+conda create -y -n mmk2kdl  python=3.12
+conda activate mmk2kdl
+
+git clone https://git.qiuzhi.tech/mmk2/mmk2_kdl.git
+cd mmk2_kdl
+pip install -e . -i https://mirrors.huaweicloud.com/repository/pypi/simple
+
+python3 -m mmk2_kdl_py.mmk2_kdl
+```
+
+Or, if a wheel is built (via CI on tags), download from artifacts.
+
+## Usage in your code
+
+```python
+from mmk2_kdl_py import MMK2Kdl
+import numpy as np
+
+mmk2 = MMK2Kdl()
+
+# q是当前的关节角度，0： spine 1-7： left arm joints 8-13： right arm joints
+q = np.array([0.571, 0.838, 0.009, 0.923, -1.675, -1.604, -0.009, -2.325, -1.868, 3.077, 1.696, 1.437, 2.596])
+T_left, T_right = mmk2.forward_kinematics(q)
+print(T_left)
+print(T_right)
+
+# IK输入参数：
+    # T_left: transformation matrix of the left arm
+    # T_right: transformation matrix of the right arm
+    # ref_pos: reference joint angles, 0： spine 1-7： left arm joints 8-13： right arm joints
+    # target_height: target height of the spine
+
+
+joints = mmk2.inverse_kinematics(T_left, T_right, ref_pos=q)
+print(joints)
+```
+
+## Development
+
+### Testing
+
+Install test dependencies:
+
+```bash
+pip install .[test] -i https://mirrors.huaweicloud.com/repository/pypi/simple
+
+```
+
+Run tests:
+
+```bash
+pytest tests/ --no-header
+```
+
+### Building
+
+To build the wheel:
+
+```bash
+pip install build
+python -m build
+```
+
+## Version Management
+
+Versions are managed automatically using git tags and setuptools_scm. To release a new version:
+
+1. Update the code.
+
+2. Commit changes.
+
+3. Tag the commit with a semantic version, e.g., git tag v0.1.0
+
+4. Push the tag: git push origin v0.1.0
+
+This will trigger the CI to build the wheel.

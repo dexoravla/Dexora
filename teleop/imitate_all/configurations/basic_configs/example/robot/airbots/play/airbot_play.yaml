@@ -1,0 +1,10 @@
+_target_: robots.airbots.airbot_play.airbot_play_3.AIRBOTPlay
+
+arm_type: "play_long"
+end_effector: "G2"
+can_interface: "can1"
+domain_id: 88
+start_arm_joint_position: null
+start_eef_joint_position: null
+# ONLINE_TRAJ, ONLINE_IDLE, ONLINE_SERVO, DEMONSTRATE_PREP
+default_robot_mode: "ONLINE_IDLE"

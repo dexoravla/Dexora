@@ -1,0 +1,13 @@
+# @package _global_
+
+fps: 25
+
+env:
+  name: airbot_play_gym
+  task: Any-v0
+  state_dim: 7
+  action_dim: 7
+  fps: ${fps}
+  episode_length: 400
+  gym:
+    fps: ${fps}

@@ -1,0 +1,126 @@
+# ============================================================================
+# Dexora .gitignore
+# ============================================================================
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ---------- Virtualenvs ----------
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# ---------- IDE / OS ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ---------- ML / Training artifacts ----------
+checkpoints/
+checkpoints-*/
+runs/
+wandb/
+outputs/
+outs/
+eval_results/
+buggy_episodes_plots/
+episode_quality_analysis*/
+new_lerobot_jerk/
+v5-95k-15/
+paper_figs/
+
+# ---------- Data (external download, see README) ----------
+data/ours/
+data/kefei_*.zip
+data/openx_embod/
+data/calvin/
+data/aloha/
+data/agilex/
+dataprocess/action37/
+dataprocess/output/
+dataprocess/realman_*/
+dataprocess/logs/
+airbot_dexterous_*/
+
+# ---------- Pretrained encoders (download separately, see README) ----------
+google/
+cutlass/
+
+# ---------- Large binary files (data / weights) ----------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.parquet
+*.bson
+*.h5
+*.hdf5
+*.tfrecord
+*.tfrecord-*
+*.npz
+*.safetensors
+*.bin
+*.pth
+*.ckpt
+# Allow tiny precomputed tensors that the code actually needs
+!data/empty_lang_embed.pt
+*.pt
+
+# ---------- Media ----------
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# ---------- Logs ----------
+*.log
+logs/
+nohup.out
+
+# ---------- Misc temp ----------
+.tmp/
+tmp/
+*.tmp
+*.bak
+*.orig
+
+# ---------- Project-specific scratch ----------
+zi3Ejb6B
+back/
+not_exist.txt
+note.txt

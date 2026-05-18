@@ -1,0 +1,72 @@
+_target_: robots.airbots.airbot_tok.airbot_tok_2_demonstration.AIRBOTTOKDemonstration
+
+airbot_play_demonstration:
+  _target_: robots.airbots.airbot_play.airbot_play_2_demonstration.AIRBOTPlayDemonstrationConfig
+  groups:
+    g1:
+      leader:
+        _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+        can_bus: "can0"
+        eef_mode: "encoder"
+        bigarm_type: "encoder"
+        forearm_type: "encoder"
+        default_action:
+          [
+            -0.05664911866188049,
+            -0.26874953508377075,
+            0.5613412857055664,
+            1.483367681503296,
+            -1.1999313831329346,
+            -1.3498512506484985,
+          ]
+      followers:
+        - _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+          can_bus: "can1"
+          eef_mode: "gripper"
+    g2:
+      leader:
+        _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+        can_bus: "can2"
+        eef_mode: "encoder"
+        bigarm_type: "encoder"
+        forearm_type: "encoder"
+        default_action:
+          [
+            -0.05664911866188049,
+            -0.26874953508377075,
+            0.5613412857055664,
+            1.483367681503296,
+            -1.1999313831329346,
+            -1.3498512506484985,
+          ]
+      followers:
+        - _target_: robots.airbots.airbot_play.airbot_play_2.AIRBOTPlayConfig
+          can_bus: "can3"
+          eef_mode: "gripper"
+
+  cameras:
+    cam1:
+      _target_: habitats.common.robot_devices.cameras.opencv.OpenCVCamera
+      camera_index: 2
+      fps: 30
+      width: 640
+      height: 480
+
+    cam2:
+      _target_: habitats.common.robot_devices.cameras.opencv.OpenCVCamera
+      camera_index: 4
+      fps: 25
+      width: 640
+      height: 480
+
+    cam3:
+      _target_: habitats.common.robot_devices.cameras.opencv.OpenCVCamera
+      camera_index: 6
+      fps: 25
+      width: 640
+      height: 480
+
+base:
+  _target_: robots.airbots.airbot_base.airbot_base.AIRBOTBaseConfig
+  # ip: "192.168.11.1"
+  velocity: "high"

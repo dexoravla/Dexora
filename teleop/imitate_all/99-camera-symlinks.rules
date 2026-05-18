@@ -1,0 +1,11 @@
+# 相机设备符号链接规则
+# 创建三个永久相机设备符号链接，基于 USB 端口位置
+
+# 左相机 - USB 端口 13.1 -> /dev/camera_left (对应 /dev/video0)
+SUBSYSTEM=="video4linux", ATTRS{devpath}=="13.1", ATTR{index}=="0", SYMLINK+="camera_left"
+
+# 右相机 - USB 端口 13.2 -> /dev/camera_right (对应 /dev/video2)
+SUBSYSTEM=="video4linux", ATTRS{devpath}=="13.2", ATTR{index}=="0", SYMLINK+="camera_right"
+
+# 高相机 - USB 端口 13.4 -> /dev/camera_high (对应 /dev/video6)
+SUBSYSTEM=="video4linux", ATTRS{devpath}=="13.4", ATTR{index}=="0", SYMLINK+="camera_high" 

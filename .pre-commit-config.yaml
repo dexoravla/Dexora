@@ -1,0 +1,67 @@
+# pre-commit hooks for Dexora. Install with:
+#   pip install pre-commit
+#   pre-commit install
+#
+# Run all hooks against the whole tree:
+#   pre-commit run --all-files
+
+default_language_version:
+  python: python3
+
+# Skip the legacy / third-party trees that we intentionally do not police.
+exclude: |
+  (?x)^(
+      lerobot/.*
+    | dataprocess/.*
+    | reference/.*
+    | ref_collect_hand/.*
+    | ref_collect_mmk/.*
+    | ref_replay/.*
+    | _ref_collet/.*
+    | deploy/.*
+    | data/preprocess_scripts/.*
+    | assets/.*
+    | .*_actions_stats/.*
+    | .*_bson_stats/.*
+    | .*_lerobot_stats/.*
+    | new_lerobot_jerk/.*
+    | new_lerobot_stats/.*
+  )$
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+        exclude: ^lerobot/.*  # lerobot ships yaml with custom tags
+      - id: check-toml
+      - id: check-json
+        exclude: |
+          (?x)^(
+              .*_actions_stats/.*\.json
+            | .*_bson_stats/.*\.json
+            | .*_lerobot_stats/.*\.json
+            | configs/finetune_sample_weights\.json
+            | configs/pretrain_sample_weights\.json
+          )$
+      - id: check-added-large-files
+        args: ["--maxkb=2048"]
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.7
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.4.2
+    hooks:
+      - id: black
