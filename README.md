@@ -13,7 +13,7 @@
 
 <p align="center">
   <i>Dexora is a Vision–Language–Action (VLA) system for <b>dual-arm, dual-hand, 36-DoF dexterous manipulation</b>,<br>
-  accepted at <b>ICRA 2026</b> and shortlisted for the <b>Best Paper Award (Final List)</b> (<a href="ICRA26_0209_FI.pdf">paper PDF</a>).<br>
+  accepted at <b>ICRA 2026</b> (<a href="ICRA26_0209_FI.pdf">paper PDF</a>).<br>
   This repository releases the full <b>training</b>, <b>inference</b>, <b>data-processing</b> and <b>teleoperation</b> code.</i>
 </p>
 
