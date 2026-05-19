@@ -348,19 +348,6 @@ Two conda environments are required (the same ones used by `deploy/`): `imitall`
 
 ---
 
-## 📈 Reproducing Results
-
-| Experiment | How to run | Knob |
-|---|---|---|
-| Basic-task benchmark | Stage 1 → Stage 3 on each task; 20 rollouts | default |
-| Dexterous-task benchmark | Same recipe, on the dexterous task subset | default |
-| Discriminator ablation | Run Stage 3 with and without the discriminator | `EXTRA_FLAGS="--no_quality_weights"` |
-| Data-composition study | Stage 3 with sim-only / sim + 50% real / sim + all real | `REAL_DATA_FRACTION={0.0, 0.5, 1.0}` |
-| Cross-embodiment fine-tune | Stage 3 checkpoint + fine-tune under each cross-embodiment config | `CONFIG_PATH=configs/cross_embodiment/{ec1_franka,ec2_aloha,ec3_g1_inspire}.yaml` |
-| Per-joint open-loop curves | `bash scripts/run_eval_example.sh` (see [Open-Loop Evaluation](#-open-loop-evaluation)) | `EPISODE_IDX`, `INFERENCE_INTERVAL` |
-| Smoothness metrics (Acc. ↓ / Jerk ↓) | `scripts/eval_smoothness.py rollouts/*.json --stats_file new_lerobot_stats/dataset_statistics.json` | — |
-
----
 
 ## 🔗 Related Work & Upstream Tooling
 
