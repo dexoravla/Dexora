@@ -24,7 +24,6 @@
 - **2026-05** — Public source release: training pipeline, real-robot inference stack, BSON → LeRobot v2.1 converters, Vision-Pro teleoperation tools.
 - **2025-12-12** — Released the **task-level** view of the real-world dataset (one folder per high-level task) on [Hugging Face](https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset).
 - **2025-12-03** — Released the full **Real-World Dataset** (**12.2K episodes / 2.92M frames / 40.5 h**) on [Hugging Face](https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset).
-- **Coming soon** — Public release of the **100K-episode simulation dataset** generated in MuJoCo.
 
 ---
 
