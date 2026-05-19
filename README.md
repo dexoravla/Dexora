@@ -3,8 +3,6 @@
 </p>
 
 <p align="center">
-  <a href="ICRA26_0209_FI.pdf"><img src="https://img.shields.io/badge/ICRA%202026-Accepted-B31B1B.svg" alt="ICRA 2026"></a>
-  <a href="ICRA26_0209_FI.pdf"><img src="https://img.shields.io/badge/ICRA%202026-Best%20Paper%20Finalist-FFD700.svg" alt="ICRA 2026 Best Paper Finalist"></a>
   <a href="#"><img src="https://img.shields.io/badge/arXiv-2026.xxxxx-B31B1B.svg" alt="arXiv"></a>
   <a href="https://dexoravla.github.io"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"></a>
   <a href="https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-Hugging%20Face-yellow.svg" alt="Dataset"></a>
