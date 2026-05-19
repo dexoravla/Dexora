@@ -372,7 +372,7 @@ Two conda environments are required (the same ones used by `deploy/`): `imitall`
 | Qwen2.5-VL | VLM-driven asset mining and physical-property assignment | <https://huggingface.co/Qwen> |
 | MuJoCo | Digital twin and replay-based post-validation | <https://mujoco.org> |
 | RDT-1B | Architectural reference for the Diffusion-Transformer policy | <https://github.com/thu-ml/RoboticsDiffusionTransformer> |
-| DWBC (Xu et al., ICML 2022) | Score → weight mapping for the post-training loss | <https://github.com/ryanxhr/DWBC> |
+| DWBC | Score → weight mapping for the post-training loss | <https://github.com/ryanxhr/DWBC> |
 
 ---
 
