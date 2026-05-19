@@ -14,7 +14,6 @@
 
 - **2025-12-03**: Released the full **Real-World Dataset** (**12.2K episodes**) on [Hugging Face](https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset).
 - **2025-12-12**: Released the **task-level** view of the real-world dataset (one folder per high-level task) on [Hugging Face](https://huggingface.co/datasets/Dexora/Dexora_Real-World_Dataset).
-- **Coming soon**: We will open-source the full **100K-episode simulation dataset**.
 
 --
 
