@@ -374,9 +374,7 @@ If you find Dexora useful in your research, please cite our ICRA 2026 paper:
 }
 ```
 
-The full author list is available in [`CITATION.cff`](CITATION.cff).
 
----
 
 ## 📝 License
 
