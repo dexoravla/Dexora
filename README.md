@@ -220,8 +220,6 @@ If you find Dexora useful in your research, please consider citing our paper:
   year={2026}
 }
 ---
----
 
-For questions, collaborations, or feedback, please feel free to open an issue or contact the maintainers via the project page. You can also reach us directly at pjr24@mails.tsinghua.edu.cn
 
 
