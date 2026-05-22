@@ -366,11 +366,11 @@ Two conda environments are required (the same ones used by `deploy/`): `imitall`
 If you find Dexora useful in your research, please cite our ICRA 2026 paper:
 
 ```bibtex
-@inproceedings{dexora2026,
-  title     = {Dexora: Open-Source VLA for High-DoF Bimanual Dexterity},
-  author    = {Zhang, Zongzheng and Pang, Jingrui and others},
-  booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)},
-  year      = {2026}
+@article{zhang2026dexora,
+  title={Dexora: Open-source VLA for High-DoF Bimanual Dexterity},
+  author={Zhang, Zongzheng and Pang, Jingrui and Yang, Zhuo and Li, Kun and Liao, Minwen and Zhang, Saining and Chi, Guoxuan and Guo, Jinbang and Gao, Huan-ang and Shi, Modi and others},
+  journal={arXiv preprint arXiv:2605.18722},
+  year={2026}
 }
 ```
 
