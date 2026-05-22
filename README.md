@@ -213,15 +213,12 @@ print("Language Instruction:", df["language_instruction"][0])
 If you find Dexora useful in your research, please consider citing our paper:
 
 ```bibtex
-@misc{dexora2026,
-  title         = {Dexora: Open-Source VLA for High-DoF Bimanual Dexterity},
-  author        = {Dexora Team},
-  year          = {2026},
-  archivePrefix = {arXiv},
-  eprint        = {xxxx.xxxxx},
-  primaryClass  = {cs.RO}
+@article{zhang2026dexora,
+  title={Dexora: Open-source VLA for High-DoF Bimanual Dexterity},
+  author={Zhang, Zongzheng and Pang, Jingrui and Yang, Zhuo and Li, Kun and Liao, Minwen and Zhang, Saining and Chi, Guoxuan and Guo, Jinbang and Gao, Huan-ang and Shi, Modi and others},
+  journal={arXiv preprint arXiv:2605.18722},
+  year={2026}
 }
-```
 
 ---
 
